@@ -13,7 +13,7 @@ module Fastlane
         require "jira-ruby"
 
         site         = params[:url]
-        context_path = "/secure"
+        context_path = ""
         auth_type    = :basic
         username     = params[:username]
         password     = params[:password]
