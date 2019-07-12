@@ -39,14 +39,21 @@ module Fastlane
 
         unless project_name.nil?
           project = client.Project.find(project_name)
+          puts "Project found: "
+          puts project
           project_id = project.id
+          puts "Project ID found: "
+          puts project_id
         end
 
         if start_date.nil?
           start_date = Date.today.to_s
         end
 
+        puts "Looking for Versions: "
         version = project.versions.find { |version| version.name == name }
+        puts "Versions found: "
+        puts "version"
         if version.nil?
           version = client.Version.build
           version.save!({
