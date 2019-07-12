@@ -12,7 +12,7 @@ module Fastlane
         require "jira-ruby"
 
         site         = params[:url]
-        context_path = ""
+        context_path = "."
         auth_type    = :basic
         username     = params[:username]
         password     = params[:password]
@@ -62,6 +62,7 @@ module Fastlane
           Actions::ChangelogFromGitCommitsAction.run(changelog_configuration)
         end
         ticket_numbers = Actions.lane_context[SharedValues::FL_CHANGELOG]
+        debug
         puts "Received ticket numbers: "
         puts ticket_numbers
         #issue_ids = Actions.lane_context[SharedValues::FL_CHANGELOG].scan(/#{project_name}-\d+/i).uniq
