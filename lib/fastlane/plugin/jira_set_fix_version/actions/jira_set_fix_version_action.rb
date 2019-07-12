@@ -8,11 +8,12 @@ module Fastlane
     end
     class JiraSetFixVersionAction < Action
       def self.run(params)
+        puts "Running jira_set_fix_version Plugin"
         Actions.verify_gem!('jira-ruby')
         require "jira-ruby"
 
         site         = params[:url]
-        context_path = "."
+        context_path = ""
         auth_type    = :basic
         username     = params[:username]
         password     = params[:password]
@@ -33,6 +34,8 @@ module Fastlane
         }
 
         client = JIRA::Client.new(options)
+        puts "Client created: "
+        puts client
 
         unless project_name.nil?
           project = client.Project.find(project_name)
