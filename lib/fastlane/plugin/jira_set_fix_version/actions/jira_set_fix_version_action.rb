@@ -61,10 +61,10 @@ module Fastlane
           changelog_configuration = FastlaneCore::Configuration.create(Actions::ChangelogFromGitCommitsAction.available_options, {})
           Actions::ChangelogFromGitCommitsAction.run(changelog_configuration)
         end
-        ticket_numbers = Actions.lane_context[SharedValues::FL_JIRA_TICKET_NUMBERS]
+        ticket_numbers = Actions.lane_context[SharedValues::FL_CHANGELOG]
         puts "Received ticket numbers: "
         puts ticket_numbers
-        issue_ids = Actions.lane_context[SharedValues::FL_CHANGELOG].scan(/#{project_name}-\d+/i).uniq
+        #issue_ids = Actions.lane_context[SharedValues::FL_CHANGELOG].scan(/#{project_name}-\d+/i).uniq
         ticket_numbers.each do |issue_id|
           begin
             issue = client.Issue.find(issue_id)
