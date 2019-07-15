@@ -118,29 +118,8 @@ module Fastlane
         end
 
         def self.details
-          # Optional:
-          # this is your chance to provide a more detailed description of this action
-          "This action requires jira-ruby gem.
-
-          Usage:
-          lane :update_jira do
-            tickets = get_ticket_numbers_from_changelog
-            tickets = tickets.map { |ticket| ticket.upcase  }
-            lane_context[SharedValues::FL_CHANGELOG] = tickets # pass ticket numbers directly to the plugin
-            version = get_current_version
-            branch = generate_clean_branch_name
-            name = version + "/" + branch # create and pass version name
-            jira_set_fix_version(
-              name: name,
-              url: \"https://farmersedgedev.atlassian.net\",
-              username: \"username\",
-              password: \"access_token\", # a token, not a password! https://id.atlassian.com/manage/api-tokens please use a token instead of password
-              project_name: \"CAB\",
-            )
-          end
-
-          Thank you to https://github.com/valeriomazzeo/fastlane-plugin-jira_transition and https://github.com/valeriomazzeo/fastlane-plugin-jira_transition for inspiration.
-          "
+          "This action requires jira-ruby gem"
+          
         end
 
         def self.available_options
