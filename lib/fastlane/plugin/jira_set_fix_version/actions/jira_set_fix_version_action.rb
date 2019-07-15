@@ -7,8 +7,6 @@ module Fastlane
       CREATE_JIRA_VERSION_VERSION_ID = :CREATE_JIRA_VERSION_VERSION_ID
     end
 
-
-
     class JiraSetFixVersionAction < Action
 
       def self.run(params)
@@ -137,7 +135,7 @@ module Fastlane
               url: \"https://farmersedgedev.atlassian.net\",
               username: \"username\",
               password: \"access_token\", # a token, not a password! https://id.atlassian.com/manage/api-tokens please use a token instead of password
-              project_name: "CAB",
+              project_name: \"CAB\",
             )
           end
 
