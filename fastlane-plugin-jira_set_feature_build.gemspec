@@ -2,16 +2,16 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fastlane/plugin/jira_set_fix_version/version'
+require 'fastlane/plugin/jira_set_feature_build/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'fastlane-plugin-jira_set_fix_version'
-  spec.version       = Fastlane::JiraSetFixVersion::VERSION
+  spec.name          = 'fastlane-plugin-jira_set_feature_build'
+  spec.version       = Fastlane::JiraSetFeatureBuild::VERSION
   spec.author        = 'Tommy Sadiq Hinrichsen'
   spec.email         = 'tommy.lynge@gmail.com'
 
-  spec.summary       = 'Tags all Jira issues mentioned in git changelog with with a fix version from parameter :name'
-  spec.homepage      = "https://github.com/sadiq81/fastlane-plugin-jira_set_fix_version"
+  spec.summary       = 'Tags passed in Jira issue with a feature build url from parameter :url'
+  spec.homepage      = "https://github.com/bmc08gt/fastlane-plugin-jira_feature_build"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)

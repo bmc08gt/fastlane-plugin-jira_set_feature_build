@@ -1,9 +1,9 @@
-describe Fastlane::Actions::JiraSetFixVersionAction do
+describe Fastlane::Actions::JiraSetFeatureBuildAction do
   describe '#run' do
     it 'prints a message' do
-      expect(Fastlane::UI).to receive(:message).with("The jira_set_fix_version plugin is working!")
+      expect(Fastlane::UI).to receive(:message).with("The jira_set_feature_build plugin is working!")
 
-      Fastlane::Actions::JiraSetFixVersionAction.run(nil)
+      Fastlane::Actions::JiraSetFeatureBuildAction.run(nil)
     end
   end
 end
