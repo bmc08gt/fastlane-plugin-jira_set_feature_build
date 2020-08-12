@@ -86,6 +86,10 @@ module Fastlane
         ["Tommy Sadiq Hinrichsen", "Brandon McAnsh"]
       end
 
+      def self.is_supported?(platform)
+        true
+      end
+
       def self.return_value	
         "Return the URL of the feature build"	
       end
@@ -135,14 +139,14 @@ module Fastlane
                     description: "The url of the feature build from the CI job",
                     type: String,
                     verify_block: proc do |value|
-                      UI.user_error!("No version name given, pass using `url: 'http://someurl'`") unless value and !value.empty?
+                      UI.user_error!("No URL given, pass using `feature_build_url: 'http://someurl'`") unless value and !value.empty?
                     end),
                     FastlaneCore::ConfigItem.new(key: :ticket_reference,
                     env_name: "FL_CREATE_JIRA_TICKET_REFERENCE",
                     description: "The ticket reference on JIRA",
                     type: String,
                     verify_block: proc do |value|
-                      UI.user_error!("No version name given, pass using `url: 'http://someurl'`") unless value and !value.empty?
+                      UI.user_error!("No ticket reference given, pass using `ticket_reference: 'APPS-1234'`") unless value and !value.empty?
                     end),
                   ]
                 end
