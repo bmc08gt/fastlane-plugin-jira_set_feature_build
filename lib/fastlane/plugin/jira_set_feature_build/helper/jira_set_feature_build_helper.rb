@@ -4,9 +4,9 @@ module Fastlane
   UI = FastlaneCore::UI unless Fastlane.const_defined?("UI")
 
   module Helper
-    class JiraSetFixVersionHelper
+    class JiraSetFeatureBuildHelper
       # class methods that you define here become available in your action
-      # as `Helper::JiraSetFixVersionHelper.your_method`
+      # as `Helper::JiraSetFeatureBuildHelper.your_method`
       #
       def self.show_message
         UI.message("Hello from the jira_set_fix_version plugin helper!")
