@@ -86,10 +86,6 @@ module Fastlane
         ["Tommy Sadiq Hinrichsen", "Brandon McAnsh"]
       end
 
-      def self.is_supported?(platform)
-        true
-      end
-
       def self.return_value	
         "Return the URL of the feature build"	
       end
@@ -157,4 +153,3 @@ module Fastlane
               end
             end
           end
-        end
