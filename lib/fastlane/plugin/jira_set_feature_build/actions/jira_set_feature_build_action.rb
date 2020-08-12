@@ -92,7 +92,10 @@ module Fastlane
 
       def self.details
         "This action requires jira-ruby gem"
-        
+      end
+
+      def self.is_supported?(platform)
+        true
       end
 
       def self.available_options
@@ -104,52 +107,48 @@ module Fastlane
             verify_block: proc do |value|	
               UI.user_error!("No url for Jira given, pass using `url: 'url'`") unless value and !value.empty?	
             end),
-            FastlaneCore::ConfigItem.new(key: :username,
-              env_name: "FL_CREATE_JIRA_VERSION_USERNAME",
-              description: "Username for JIRA instance",
-              type: String,
-              verify_block: proc do |value|
-                UI.user_error!("No username given, pass using `username: 'jira_user'`") unless value and !value.empty?
-              end),
-              FastlaneCore::ConfigItem.new(key: :password,
-                env_name: "FL_CREATE_JIRA_VERSION_PASSWORD",
-                description: "Password for Jira",
-                type: String,
-                verify_block: proc do |value|
-                  UI.user_error!("No password given, pass using `password: 'T0PS3CR3T'`") unless value and !value.empty?
-                end),
-                FastlaneCore::ConfigItem.new(key: :project_name,
-                  env_name: "FL_CREATE_JIRA_VERSION_PROJECT_NAME",
-                  description: "Project ID for the JIRA project. E.g. the short abbreviation in the JIRA ticket tags",
-                  type: String,
-                  optional: true,
-                  conflicting_options: [:project_id],
-                  conflict_block: proc do |value|
-                    UI.user_error!("You can't use 'project_name' and '#{project_id}' options in one run")
-                  end,
-                  verify_block: proc do |value|
-                    UI.user_error!("No Project ID given, pass using `project_id: 'PROJID'`") unless value and !value.empty?
-                  end),
-                  FastlaneCore::ConfigItem.new(key: :feature_build_url,
-                    env_name: "FL_CREATE_JIRA_FEATURE_BUILD_URL",
-                    description: "The url of the feature build from the CI job",
-                    type: String,
-                    verify_block: proc do |value|
-                      UI.user_error!("No URL given, pass using `feature_build_url: 'http://someurl'`") unless value and !value.empty?
-                    end),
-                    FastlaneCore::ConfigItem.new(key: :ticket_reference,
-                    env_name: "FL_CREATE_JIRA_TICKET_REFERENCE",
-                    description: "The ticket reference on JIRA",
-                    type: String,
-                    verify_block: proc do |value|
-                      UI.user_error!("No ticket reference given, pass using `ticket_reference: 'APPS-1234'`") unless value and !value.empty?
-                    end),
-                  ]
-                end
-
-                def self.is_supported?(platform)
-                  true
-                end
-              end
-            end
-          end
+          FastlaneCore::ConfigItem.new(key: :username,
+            env_name: "FL_CREATE_JIRA_VERSION_USERNAME",
+            description: "Username for JIRA instance",
+            type: String,
+            verify_block: proc do |value|
+              UI.user_error!("No username given, pass using `username: 'jira_user'`") unless value and !value.empty?
+            end),
+          FastlaneCore::ConfigItem.new(key: :password,
+            env_name: "FL_CREATE_JIRA_VERSION_PASSWORD",
+            description: "Password for Jira",
+            type: String,
+            verify_block: proc do |value|
+              UI.user_error!("No password given, pass using `password: 'T0PS3CR3T'`") unless value and !value.empty?
+            end),
+          FastlaneCore::ConfigItem.new(key: :project_name,
+            env_name: "FL_CREATE_JIRA_VERSION_PROJECT_NAME",
+            description: "Project ID for the JIRA project. E.g. the short abbreviation in the JIRA ticket tags",
+            type: String,
+            optional: true,
+            conflicting_options: [:project_id],
+            conflict_block: proc do |value|
+              UI.user_error!("You can't use 'project_name' and '#{project_id}' options in one run")
+            end,
+            verify_block: proc do |value|
+              UI.user_error!("No Project ID given, pass using `project_id: 'PROJID'`") unless value and !value.empty?
+            end),
+          FastlaneCore::ConfigItem.new(key: :feature_build_url,
+            env_name: "FL_CREATE_JIRA_FEATURE_BUILD_URL",
+            description: "The url of the feature build from the CI job",
+            type: String,
+            verify_block: proc do |value|
+              UI.user_error!("No URL given, pass using `feature_build_url: 'http://someurl'`") unless value and !value.empty?
+            end),
+          FastlaneCore::ConfigItem.new(key: :ticket_reference,
+            env_name: "FL_CREATE_JIRA_TICKET_REFERENCE",
+            description: "The ticket reference on JIRA",
+            type: String,
+            verify_block: proc do |value|
+              UI.user_error!("No ticket reference given, pass using `ticket_reference: 'APPS-1234'`") unless value and !value.empty?
+            end),
+        ]
+      end
+    end
+  end
+end
